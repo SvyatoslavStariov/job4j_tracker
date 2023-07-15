@@ -9,6 +9,9 @@ public class College {
         student.setFullName("Statikov Svyatoslav Sergeevich");
         student.setGroup("Java");
         student.setDateAdmission(LocalDate.of(2023, 2, 24));
-        System.out.printf("Student with full name: %s, group: %s, date admission: %s%n", student.getFullName(), student.getGroup(), student.getDateAdmission());
+        System.out.printf("Student with full name: %s, group: %s, date admission: %s%n",
+                student.getFullName(),
+                student.getGroup(),
+                student.getDateAdmission());
     }
 }
