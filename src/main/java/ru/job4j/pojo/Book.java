@@ -24,11 +24,4 @@ public class Book {
     public void setPage(int page) {
         this.page = page;
     }
-
-    @Override
-    public String toString() {
-        return "Book{" + "name='"
-                + name + '\'' + ", page="
-                + page + '}';
-    }
 }
