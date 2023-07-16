@@ -61,7 +61,6 @@ public class Tracker {
         if (rsl) {
             System.arraycopy(this.items, index + 1, this.items, index, size - index - 1);
             items[size - 1] = null;
-            ids--;
             size--;
         }
         return rsl;
