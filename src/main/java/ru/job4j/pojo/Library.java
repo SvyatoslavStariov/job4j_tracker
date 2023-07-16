@@ -8,17 +8,17 @@ public class Library {
                 new Book("three", 234),
                 new Book("clean code", 234)
         };
-        for (int index = 0; index < 4; index++) {
+        for (int index = 0; index < books.length; index++) {
             System.out.println(books[index].getName() + " - " + books[index].getPage());
         }
         Book bookTemp = books[3];
         books[3] = books[0];
         books[0] = bookTemp;
-        for (int index = 0; index < 4; index++) {
+        for (int index = 0; index < books.length; index++) {
             System.out.println(books[index].getName() + " - " + books[index].getPage());
         }
         for (Book book : books) {
-            if (book.getName().equals("clean code")) {
+            if ("clean code".equals(book.getName())) {
                 System.out.println(book.getName() + " - " + book.getPage());
             }
         }
