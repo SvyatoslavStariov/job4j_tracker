@@ -2,8 +2,6 @@ package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.format.DateTimeFormatter;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StartUITest {
@@ -117,17 +115,17 @@ public class StartUITest {
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
         assertThat(out.toString()).isEqualTo(
                 "Menu:" + System.lineSeparator()
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
                         + "=== Find items by name ===" + System.lineSeparator()
-                        + "Item{id=1, name='test1', created=" + one.getCreated().format(dateTimeFormatter) + "}" + System.lineSeparator()
+                        + one + System.lineSeparator()
                         + "Menu:" + System.lineSeparator()
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
-                        + "=== Exit Program ===" + System.lineSeparator());    }
+                        + "=== Exit Program ===" + System.lineSeparator());
+    }
 
     @Test
     public void whenFindByIdActionAction() {
@@ -142,13 +140,12 @@ public class StartUITest {
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
         assertThat(out.toString()).isEqualTo(
                 "Menu:" + System.lineSeparator()
                         + "0. Find item by id" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
                         + "=== Find item by id ===" + System.lineSeparator()
-                        + "Item{id=1, name='test1', created=" + one.getCreated().format(dateTimeFormatter) + "}" + System.lineSeparator()
+                        + one + System.lineSeparator()
                         + "Menu:" + System.lineSeparator()
                         + "0. Find item by id" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
