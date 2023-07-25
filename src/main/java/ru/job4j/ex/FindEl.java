@@ -16,7 +16,7 @@ public class FindEl {
                     "D");
             System.out.println(index);
         } catch (ElementNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
