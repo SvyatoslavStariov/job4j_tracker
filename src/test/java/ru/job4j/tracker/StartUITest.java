@@ -86,7 +86,7 @@ public class StartUITest {
     public void whenFindAllAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"1"}
+                new String[]{"0", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -96,6 +96,11 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString()).isEqualTo(
                 "Menu:" + System.lineSeparator()
+                        + "0. Show all items" + System.lineSeparator()
+                        + "1. Exit Program" + System.lineSeparator()
+                        + "=== Show all items ===" + System.lineSeparator()
+                        + "Хранилище еще не содержит заявок" + System.lineSeparator()
+                        + "Menu:" + System.lineSeparator()
                         + "0. Show all items" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
                         + "=== Exit Program ===" + System.lineSeparator()
