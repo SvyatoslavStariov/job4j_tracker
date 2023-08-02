@@ -31,21 +31,13 @@ public class ValidateInputTest {
     @Test
     public void whenManyValidInput() {
         Output out = new StubOutput();
-        Input in1 = new StubInput(
-                new String[]{"1"}
+        Input in = new StubInput(
+                new String[]{"1", "2", "3"}
         );
-        Input in2 = new StubInput(
-                new String[]{"2"}
-        );
-        Input in3 = new StubInput(
-                new String[]{"3"}
-        );
-        ValidateInput input1 = new ValidateInput(out, in1);
-        ValidateInput input2 = new ValidateInput(out, in2);
-        ValidateInput input3 = new ValidateInput(out, in3);
-        int selected1 = input1.askInt("Enter menu:");
-        int selected2 = input2.askInt("Enter menu:");
-        int selected3 = input3.askInt("Enter menu:");
+        ValidateInput input = new ValidateInput(out, in);
+        int selected1 = input.askInt("Enter menu:");
+        int selected2 = input.askInt("Enter menu:");
+        int selected3 = input.askInt("Enter menu:");
         assertThat(selected1).isEqualTo(1);
         assertThat(selected2).isEqualTo(2);
         assertThat(selected3).isEqualTo(3);
