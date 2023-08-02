@@ -7,23 +7,30 @@ public class PasswordValidator {
         if (password == null) {
             throw new IllegalArgumentException("Password can't be null");
         }
+        if (password.length() < 8 || password.length() > 32) {
+            throw new IllegalArgumentException(
+                    "Password should be length [8, 32]"
+            );
+        }
         boolean hasUpCase = false;
         boolean hasLowCase = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
-        boolean hasValidLength = password.length() >= 8 && password.length() <= 32;
         for (char symbol : password.toCharArray()) {
-            if (!hasUpCase) {
-                hasUpCase = Character.isUpperCase(symbol);
+            if (Character.isUpperCase(symbol)) {
+                hasUpCase = true;
             }
-            if (!hasLowCase) {
-                hasLowCase = Character.isLowerCase(symbol);
+            if (Character.isLowerCase(symbol)) {
+                hasLowCase = true;
             }
-            if (!hasDigit) {
-                hasDigit = Character.isDigit(symbol);
+            if (Character.isDigit(symbol)) {
+                hasDigit = true;
             }
-            if (!hasSpecial) {
-                hasSpecial = !(Character.isLetter(symbol) || Character.isDigit(symbol));
+            if (!(Character.isLetter(symbol) || Character.isDigit(symbol))) {
+                hasSpecial = true;
+            }
+            if (hasUpCase && hasLowCase && hasDigit && hasSpecial) {
+                break;
             }
         }
         if (!hasUpCase) {
@@ -44,11 +51,6 @@ public class PasswordValidator {
         if (!hasSpecial) {
             throw new IllegalArgumentException(
                     "Password should contain at least one special symbol"
-            );
-        }
-        if (!hasValidLength) {
-            throw new IllegalArgumentException(
-                    "Password should be length [8, 32]"
             );
         }
         for (String string : FORBIDDEN) {
