@@ -20,7 +20,7 @@ public class ReconstructPhrase {
         for (int i = 0; i < size; i++) {
             Character character = evenElements.poll();
             if (i % 2 == 0) {
-                stringBuilder.append(character.toString());
+                stringBuilder.append(character);
             }
         }
         return stringBuilder.toString();
@@ -28,10 +28,10 @@ public class ReconstructPhrase {
 
     private String getDescendingElements() {
         StringBuilder stringBuilder = new StringBuilder();
-        Iterator<Character> iterator = descendingElements.descendingIterator();
-        while (iterator.hasNext()) {
-            Character character = iterator.next();
-            stringBuilder.append(character.toString());
+        int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
+            Character character = descendingElements.pollLast();
+            stringBuilder.append(character);
         }
         return stringBuilder.toString();
     }
