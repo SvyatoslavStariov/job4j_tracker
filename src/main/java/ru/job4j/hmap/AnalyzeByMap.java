@@ -22,8 +22,7 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 size += subject.score();
             }
-            Label label = new Label(pupil.name(), (double) size / pupil.subjects().size());
-            labels.add(label);
+            labels.add(new Label(pupil.name(), (double) size / pupil.subjects().size()));
         }
         return labels;
     }
@@ -34,13 +33,11 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 int sum = map.get(subject.name()) != null ? map.get(subject.name()) : 0;
                 map.put(subject.name(), subject.score() + sum);
-
             }
         }
         List<Label> labels = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            Label label = new Label(entry.getKey(), (double) entry.getValue() / pupils.size());
-            labels.add(label);
+            labels.add( new Label(entry.getKey(), (double) entry.getValue() / pupils.size()));
         }
         return labels;
     }
@@ -52,9 +49,7 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 score += subject.score();
             }
-            Label label = new Label(pupil.name(), score);
-            labels.add(label);
-
+            labels.add(new Label(pupil.name(), score));
         }
         labels.sort(Comparator.naturalOrder());
         return labels.get(labels.size() - 1);
@@ -66,13 +61,11 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 int sum = map.get(subject.name()) != null ? map.get(subject.name()) : 0;
                 map.put(subject.name(), subject.score() + sum);
-
             }
         }
         List<Label> labels = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            Label label = new Label(entry.getKey(), entry.getValue());
-            labels.add(label);
+            labels.add(new Label(entry.getKey(), entry.getValue()));
         }
         labels.sort(Comparator.naturalOrder());
         return labels.get(labels.size() - 1);
