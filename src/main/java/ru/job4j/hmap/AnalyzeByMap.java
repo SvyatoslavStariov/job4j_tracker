@@ -37,7 +37,7 @@ public class AnalyzeByMap {
         }
         List<Label> labels = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            labels.add( new Label(entry.getKey(), (double) entry.getValue() / pupils.size()));
+            labels.add(new Label(entry.getKey(), (double) entry.getValue() / pupils.size()));
         }
         return labels;
     }
