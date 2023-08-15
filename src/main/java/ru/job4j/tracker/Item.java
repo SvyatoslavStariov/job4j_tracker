@@ -50,20 +50,13 @@ public class Item {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Item item = (Item) o;
-
-        if (id != item.id) {
-            return false;
-        }
-        return Objects.equals(name, item.name);
+        return id == item.id && Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return Objects.hash(id, name);
     }
 
     @Override
