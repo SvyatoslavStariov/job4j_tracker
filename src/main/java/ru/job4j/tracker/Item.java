@@ -56,17 +56,13 @@ public class Item {
         if (id != item.id) {
             return false;
         }
-        if (!Objects.equals(name, item.name)) {
-            return false;
-        }
-        return Objects.equals(created, item.created);
+        return Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
         return result;
     }
 
