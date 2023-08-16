@@ -11,7 +11,7 @@ public class ScheduleTask {
     }
 
     public void addTask(Task task) {
-        queue.add(task);
+        queue.offer(task);
     }
 
     public Task readTask() {
