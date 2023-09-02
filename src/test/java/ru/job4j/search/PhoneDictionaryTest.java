@@ -2,8 +2,6 @@ package ru.job4j.search;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PhoneDictionaryTest {
@@ -13,7 +11,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("Petr");
+        var persons = phones.find("Petr");
         assertThat(persons.get(0).getSurname()).isEqualTo("Arsentev");
     }
 
@@ -23,7 +21,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("Arsen");
+        var persons = phones.find("Arsen");
         assertThat(persons.get(0).getName()).isEqualTo("Petr");
     }
 
@@ -33,7 +31,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("5348");
+        var persons = phones.find("5348");
         assertThat(persons.get(0).getName()).isEqualTo("Petr");
     }
 
@@ -43,7 +41,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("Bry");
+        var persons = phones.find("Bry");
         assertThat(persons.get(0).getName()).isEqualTo("Petr");
     }
 
@@ -53,7 +51,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("dsf");
+        var persons = phones.find("dsf");
         assertThat(persons).isEmpty();
     }
 }
