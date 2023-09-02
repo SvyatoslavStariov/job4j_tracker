@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class BankService {
     /**
@@ -52,12 +53,11 @@ public class BankService {
      * @return пользователь
      */
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (passport.equals(user.getPassport())) {
-                return user;
-            }
-        }
-        return null;
+        return users.keySet()
+                .stream()
+                .filter(user -> passport.equals(user.getPassport()))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -67,15 +67,13 @@ public class BankService {
      * @return банковский счет
      */
     public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            for (Account account : users.get(user)) {
-                if (requisite.equals(account.getRequisite())) {
-                    return account;
-                }
-            }
-        }
-        return null;
+        return Optional.ofNullable(findByPassport(passport))
+                .flatMap(user -> users.get(user)
+                        .stream()
+                        .filter(account -> requisite.equals(account.getRequisite()))
+                        .findFirst())
+                .orElse(null);
+
     }
 
     /**
