@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -49,10 +50,10 @@ public class Analyze {
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
-        LinkedHashMap<String, Double> subjectsMap = stream
+        Map<String, Double> subjectsMap = stream
                 .map(Pupil::subjects)
                 .flatMap(Collection::stream)
-                .collect(Collectors.groupingBy(Subject::name, LinkedHashMap::new, Collectors.summingDouble(Subject::score)));
+                .collect(Collectors.groupingBy(Subject::name, Collectors.summingDouble(Subject::score)));
         return subjectsMap.entrySet()
                 .stream()
                 .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
