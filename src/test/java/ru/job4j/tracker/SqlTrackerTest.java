@@ -78,6 +78,20 @@ public class SqlTrackerTest {
     }
 
     @Test
+    public void whenSaveThreeItemsAndDeleteOneThenFindAllMustBeTwoItems() {
+        Store tracker = new SqlTracker(connection);
+        Item item = new Item("first");
+        Item item2 = new Item("second");
+        Item item3 = new Item("third");
+        tracker.add(item);
+        tracker.add(item2);
+        tracker.add(item3);
+        int id = item.getId();
+        tracker.delete(id);
+        assertThat(tracker.findAll().size()).isEqualTo(2);
+    }
+
+    @Test
     public void whenSaveTwoItemsThenFindByAllMustBeEqualsTwoItems() {
         Store tracker = new SqlTracker(connection);
         Item first = new Item("First");
