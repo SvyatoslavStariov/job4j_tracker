@@ -88,7 +88,8 @@
                 <version>4.28.0</version>
                 <configuration>
                     <propertyFile>${liquibase.config}</propertyFile>
-                </configuration>      <executions>
+                </configuration>
+                <executions>
                 <execution>
                     <phase>process-resources</phase>
                     <goals>
