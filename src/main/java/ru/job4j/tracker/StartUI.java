@@ -1,8 +1,12 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StartUI {
+
     private final Output out;
 
     public StartUI(Output out) {
